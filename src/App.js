@@ -1,4 +1,9 @@
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col } from "react-bootstrap";
+import "./App.css";
+import ContactForm from "./component/ContactForm";
+import ContactList from "./component/ContactList";
+
 
 // 유저는 연락처를 생성할 수 있다
 // 연락처에는 이름과 전화번호 정보가 필요하다
@@ -8,7 +13,17 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h1>Phone Book</h1>
+      <h1 className="title">연 락 처</h1>
+      <Container>
+        <Row>
+          <Col className="border-column">
+            <ContactForm />
+          </Col>
+          <Col>
+            <ContactList />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
