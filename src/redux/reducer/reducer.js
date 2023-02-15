@@ -1,13 +1,22 @@
-let initialState = {
+const initialState = {
   contactList: [],
+  keyword: "",
 };
-function reducer(state = initialState, action) {
-  switch (action.type) {
+const reducer = (state = initialState, action) => {
+  let { type, payload } = action;
+  switch (type) {
     case "ADD_CONTACT":
-      return { ...state, contactList: [...state.contactList, { name: action.payload.name, phoneNumber: action.payload.phoneNumber }] };
-    default:
-      return { ...state };
+      state.contactList.push({
+        name: payload.name,
+        phoneNumber: payload.phoneNumber,
+      });
+      break;
+    case "SEARCH_BY_USERNAME":
+      state.keyword = payload.keyword;
+      break;
   }
-}
+
+  return { ...state };
+};
 
 export default reducer;
